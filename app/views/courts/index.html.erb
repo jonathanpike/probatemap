@@ -1,0 +1,57 @@
+<div id="wrapper">
+
+  <div id="map"></div>
+
+  <div id="over-map">
+    HELLO!
+  </div>
+
+ 
+  
+  
+  
+</div>
+
+<script>
+
+function initMap() {
+  var myLatLng = {lat: 43.65400959999999, lng: -79.3872207};
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatLng,
+    zoom: 8
+  });
+
+  <% @courts.each do |c| %>
+
+    var courtLatLng = {lat: <%= c.latitude %>, lng: <%= c.longitude %>};
+
+    var marker<%= c.id %> = new google.maps.Marker({
+      position: courtLatLng,
+      map: map,
+      title: "<%= c.name %>"
+    });
+    marker<%= c.id %>.addListener('click', function() {
+      infowindow<%= c.id %>.open(map, marker<%= c.id %>);
+    });
+
+    var contentString = '<div class="content">'+
+      '<div class="siteNotice">'+
+      '</div>'+
+      '<h1 class="firstHeading"><%= c.name %></h1>'+
+      '<div class="bodyContent">'+
+      '<p><b><%= c.address %></b></p>'+
+      '<p><%= c.phone %>'+
+      '</div>'+
+      '</div>';
+
+    var infowindow<%= c.id %> = new google.maps.InfoWindow({
+      content: contentString
+    });
+  <% end %>
+}
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGTDrsp5X_xvV7RLsXIzd61YH7eedt5TI&callback=initMap"
+async defer></script>
