@@ -3,24 +3,47 @@
   <div id="map"></div>
 
   <div id="over-map">
-    HELLO!
+    <%= form_tag "courts/get_address" do %>
+      <%= text_field_tag 'address', nil, :placeholder => "Last Residence Address" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+
+    <% if @address.present? %>
+      <h2>Closest Estates Court to <%= @address %></h2>
+      <p><%= @closest %></p>
+    <% end %>
   </div>
 
- 
-  
-  
   
 </div>
 
 <script>
 
 function initMap() {
-  var myLatLng = {lat: 43.65400959999999, lng: -79.3872207};
+  <% if @address.present? %>
+    var searchLatLng = {lat: <%= @search_lat %>, lng: <%= @search_long %>};
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
-    zoom: 8
-  });
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: searchLatLng,
+      zoom: 8
+    });
+
+    var markerSearch = new google.maps.Marker({
+      position: searchLatLng,
+      label: "A",
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: "<%= @address %>"
+    });
+  <% else %>
+    var myLatLng = {lat: 43.65400959999999, lng: -79.3872207};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        zoom: 8
+    });
+
+  <% end %>
 
   <% @courts.each do |c| %>
 
