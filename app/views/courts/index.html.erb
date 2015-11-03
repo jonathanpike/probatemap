@@ -3,7 +3,7 @@
   <div id="map"></div>
 
   <div id="over-map">
-    <div>
+    <div class="form">
     <%= form_tag "courts/get_address" do %>
       <%= text_field_tag 'address', nil, :placeholder => "Last Residence Address" %>
       <%= submit_tag "Search", :class => "button" %>
@@ -11,16 +11,17 @@
     </div>
 
     <% if @address.present? %>
+      <div class="clear-button">
+        <%= link_to "Clear", "#", :class => "button" %>
+      </div>
+
       <div>
-      <%= link_to "Clear", "#", :class => "button" %>
-    </div>
-      <hr> 
-      <div>
-      <p class="court-overlay"><span class="court-overlay-title">Closest Estates Court to:</span> <%= image_tag("pin.png") %> <%= @address %></p>
-      <p class="court-overlay"><%= @closest_name %></p>
-      <p class="court-overlay"><%= @closest_address %></p>
-      <p class="court-overlay"><a href="tel:<%= @closest_phone %>"><%= @closest_phone %></a></p>
-    </div>
+        <hr> 
+        <p class="court-overlay"><span class="court-overlay-title">Closest Estates Court to:</span> <%= image_tag("pin.png", :class => "pin") %> <%= @address %></p>
+        <p class="court-overlay"><%= @closest_name %></p>
+        <p class="court-overlay"><%= @closest_address %></p>
+        <p class="court-overlay"><a href="tel:<%= @closest_phone %>"><%= @closest_phone %></a></p>
+      </div>
     <% end %>
   </div>
 

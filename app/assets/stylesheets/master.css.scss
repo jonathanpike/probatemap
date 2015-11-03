@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -28,7 +34,11 @@ html, body {
 	padding: 5px;
 	background-color: #fff;
 	box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
-	min-width: 500px;
+	max-width: 500px;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .button {
@@ -62,17 +72,24 @@ html, body {
 }
 
 #address {
-	width: 80%;
-	height: 30px;
+	width: 350px;
+	height: 36px;
 	font-size: 16px;
 	padding-left: 3px;
     display: inline-block;
     vertical-align: top;
 }
 
+.form {
+    flex-grow: 2;
+}
+
+.clear-button {
+    flex-grow: 1;
+}
+
 .court-overlay {
 	font-size: 14px;
-
 }
 
 hr {
@@ -80,4 +97,8 @@ hr {
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.pin {
+    height: 25px;
 }
