@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'courts#index'
   post 'courts/get_address' => 'courts#get_address'
+  post 'courts/clear' => 'courts#clear_session'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

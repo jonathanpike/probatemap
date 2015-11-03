@@ -12,7 +12,7 @@
 
     <% if @address.present? %>
       <div class="clear-button">
-        <%= link_to "Clear", "#", :class => "button" %>
+        <%= link_to "Clear", courts_clear_path, method: :post, :class => "button" %>
       </div>
 
       <div>

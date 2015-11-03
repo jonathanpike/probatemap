@@ -1,3 +1,5 @@
+/* Page Styling */
+
 * {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -24,6 +26,8 @@ html, body {
 	position: relative; 
 }
 
+/* Map Overlay Positioning and Boxes */
+
 #over-map { 
 	position: absolute; 
 	top: 10px; 
@@ -40,6 +44,36 @@ html, body {
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+
+#address {
+    width: 350px;
+    height: 36px;
+    font-size: 16px;
+    padding-left: 3px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.form {
+    flex-grow: 2;
+}
+
+.clear-button {
+    flex-grow: 1;
+}
+
+/* Map Overlay Fonts */
+
+.court-overlay {
+    font-size: 14px;
+}
+
+.court-overlay-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Map Overlay Elements */
 
 .button {
 	padding: 10px 15px;
@@ -71,29 +105,8 @@ html, body {
     border: solid 1px #203E5F;
 }
 
-#address {
-	width: 350px;
-	height: 36px;
-	font-size: 16px;
-	padding-left: 3px;
-    display: inline-block;
-    vertical-align: top;
-}
-
-.form {
-    flex-grow: 2;
-}
-
-.clear-button {
-    flex-grow: 1;
-}
-
-.court-overlay {
-	font-size: 14px;
-}
-
 hr {
-	border: 0;
+    border: 0;
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);

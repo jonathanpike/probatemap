@@ -24,6 +24,7 @@ class CourtsController < ApplicationController
 
   def clear_session
     session[:address] = nil
+    redirect_to root_path
   end
-  helper_method :clear_session
+
 end
