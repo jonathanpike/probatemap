@@ -66,7 +66,7 @@ function initMap() {
       title: "<%= c.name %>"
     });
     marker<%= c.id %>.addListener('click', function() {
-      infowindow<%= c.id %>.open(map, marker<%= c.id %>);
+      infoWindow.open(map, marker<%= c.id %>);
     });
 
     var contentString = '<div class="content">'+
@@ -78,11 +78,11 @@ function initMap() {
       '<a href="tel:<%= c.phone %>"><%= c.phone %></a>'+
       '</div>'+
       '</div>';
+    <% end %>
 
-    var infowindow<%= c.id %> = new google.maps.InfoWindow({
+    var infoWindow = new google.maps.InfoWindow({
       content: contentString
     });
-  <% end %>
 }
 
 </script>
