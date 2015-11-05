@@ -24,8 +24,7 @@
       </div>
     <% end %>
   </div>
-
-  
+ 
 </div>
 
 <script>
@@ -56,6 +55,8 @@ function initMap() {
 
   <% end %>
 
+  var image = 'assets/court.png';
+
   <% @courts.each do |c| %>
 
     var courtLatLng = {lat: <%= c.latitude %>, lng: <%= c.longitude %>};
@@ -63,13 +64,15 @@ function initMap() {
     var marker<%= c.id %> = new google.maps.Marker({
       position: courtLatLng,
       map: map,
+      icon: image,
       title: "<%= c.name %>"
     });
     marker<%= c.id %>.addListener('click', function() {
+      infoWindow.setContent(contentString<%= c.id %>);
       infoWindow.open(map, marker<%= c.id %>);
     });
 
-    var contentString = '<div class="content">'+
+    var contentString<%= c.id %> = '<div class="content">'+
       '<div class="siteNotice">'+
       '</div>'+
       '<h1 class="firstHeading"><%= c.name %></h1>'+
@@ -78,11 +81,9 @@ function initMap() {
       '<a href="tel:<%= c.phone %>"><%= c.phone %></a>'+
       '</div>'+
       '</div>';
-    <% end %>
+  <% end %>
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: contentString
-    });
+  var infoWindow = new google.maps.InfoWindow()
 }
 
 </script>
